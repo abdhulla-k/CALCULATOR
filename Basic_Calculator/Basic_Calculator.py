@@ -11,14 +11,23 @@ def clear():       # it is the method of 'clear' button.
     input_text.set( "" )
 
 
-def equal():      # it is for '=' button
-    global expression
-    
-    result = expression + str( eval( expression )) # eval function parses the expression argument and evaluates it as a 
-    # python expression. In simple words, the eval function evaluates the “String” like a python expression and returns
-    #  the result as an integer.
-    input_text.set( result )
-    expression = ""
+def equal():
+	try:
+
+		global expression# eval function parses the expression argument and evaluates it as a 
+        # python expression. In simple words, the eval function evaluates the “String” like a python expression and returns
+        #  the result as an integer.
+
+		total = str(eval(expression))
+
+		input_text.set(total)
+
+		expression = ""
+
+	except:
+
+		input_text.set(" error ")
+		expression = ""
 
 
 def scan( self ):    # int is the selection metnod.this function continuously updates the input whenever enters a number
@@ -28,14 +37,14 @@ def scan( self ):    # int is the selection metnod.this function continuously up
 
 
 window = Tk()   # created a basic window
-window.geometry( "350x190" )   # it is to set the measure of the basic window
+window.geometry( "350x159" )   # it is to set the measure of the basic window
 window.title( "Basic Calculator" ) # created title
 window.configure( background= "grey" )  # to determine the color
 
 
 input_text = StringVar()   # this is to receive input
 # now let's create an input field
-input_field = Entry( window, width= 16, font= ('arial', 18, 'bold'), textvariable= input_text, justify= RIGHT,
+input_field = Entry( window, width= 16, font= ('arial', 18, 'bold'), textvariable= input_text,
  bd= 0, bg= "white" )
 input_field.grid( ipadx= 70, columnspan= 4 )    # ipady is internal padding to increase the height of input field
 
@@ -88,19 +97,11 @@ Miness.grid( row= 2, column= 3)
 Multiple = Button( window, text= "*", fg= 'black', bg= 'red', command= lambda: scan("*"), height= 1, width= 7 )
 Miness.grid( row= 3, column= 3 )
 
-Devide = Button( window, text= "", fg= 'black', bg= 'red', command= lambda: scan("/"), height= 1, width= 7 )
+Devide = Button( window, text= "/", fg= 'black', bg= 'red', command= lambda: scan("/"), height= 1, width= 7 )
 Devide.grid( row= 4, column= 3)
 
 Equalto = Button( window, text= "=", fg= 'black', bg= 'red', command= equal, height= 1, width= 7 )
 Equalto.grid( row= 5, column= 3 )
-
-
-
-
-
-
-
-
 
 
 
