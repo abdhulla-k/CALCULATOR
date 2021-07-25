@@ -18,9 +18,9 @@ def equal():
         # python expression. In simple words, the eval function evaluates the “String” like a python expression and returns
         #  the result as an integer.
 
-		total = str(eval(expression))
+		result = str(eval(expression))
 
-		input_text.set(total)
+		input_text.set(result)
 
 		expression = ""
 
